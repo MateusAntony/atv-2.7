@@ -2,13 +2,13 @@ import React from 'react';
 
 function SearchBar({ filterText, onFilterTextChange }) {
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
       <input
         type="text"
         value={filterText}
-        placeholder="Buscar por mensagem ou autor..."
+        placeholder="Procurar..."
         onChange={(e) => onFilterTextChange(e.target.value)}
-        style={{ padding: '8px', width: '300px', marginBottom: '16px' }}
+        style={{ padding: '8px', height: '10px', width: '800px', marginBottom: '16px' }}
       />
     </div>
   );

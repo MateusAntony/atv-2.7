@@ -30,20 +30,21 @@ export default function Home() {
 
   useEffect(() => {
     fetch(API_URL)
-      .then((response) => response.json())
-      .then((data) => {
+      .then((response) => response.text())          // pega como texto bruto
+      .then((text) => {
+        const data = JSON.parse(text);              // parse manual garante UTF-8
         setBlogMessages(data);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setError('Erro ao carregar mensagens.');
         setLoading(false);
       });
-  }, []); // [] = roda só uma vez, quando a página carrega
+  }, []);
 
   return (
     <main style={{ fontFamily: 'sans-serif', margin: '20px', padding: '0' }}>
-      <h1>Mensagens do Blog</h1>
+      <h4 style={{ textAlign: 'center' }}>Procure uma mensagem:</h4>
 
       {loading && <p>Carregando...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
